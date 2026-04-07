@@ -1,0 +1,23 @@
+Name,Age,Salary,City
+Divya,23,29000,Coimbatore
+Sneha,24,30000,Hyderabad
+Arjun,25,35000,Chennai
+Keerthi,25,37000,Pune
+Rohit,26,41000,Ahmedabad
+Priya,28,48000,Bangalore
+Lavanya,27,50000,Ahmedabad
+Ananya,27,52000,Pune
+Nikhil,28,54000,Hyderabad
+Shalini,29,56000,Coimbatore
+Karthik,29,58000,Chennai
+Rahul,32,60000,Mumbai
+Aishwarya,30,61000,Chennai
+Meera,31,67000,Kolkata
+Ajay,33,69000,Kolkata
+Pooja,34,72000,Mumbai
+Vikram,35,75000,Delhi
+Manoj,36,80000,Delhi
+Deepak,38,85000,Bangalore
+Suresh,40,90000,Bangalore
+,,Average: 57450,
+,,Sum: 1149000,
