@@ -1,0 +1,26 @@
+Campaign_ID,Channel,Location,Spend,Clicks,Conversions,Revenue,ROI_Percentage,ROI_Z_Score,Status
+CMP_001,Outdoor (Billboards),HSR Layout,13571.66,431,8,22936.41,69.0,-0.4813,Active/Successful
+CMP_002,Influencer Marketing,HSR Layout,87055.43,2154,25,26326.5,-69.76,-0.9187,Active/Successful
+CMP_003,Google Ads,Whitefield,38081.48,1623,51,54257.12,42.48,-0.5649,Active/Successful
+CMP_004,Instagram Ads,Whitefield,26403.12,3563,84,288958.88,994.41,2.4359,Active/Successful
+CMP_005,Facebook Ads,Jayanagar,4905.7,550,7,28150.12,473.82,0.7948,Active/Successful
+CMP_006,Outdoor (Billboards),Jayanagar,4904.88,186,2,2250.51,-54.12,-0.8694,Active/Successful
+CMP_007,Instagram Ads,Indiranagar,1730.59,182,3,14119.91,715.9,1.5579,Active/Successful
+CMP_008,Outdoor (Billboards),Whitefield,58166.61,2723,26,66422.44,14.19,-0.654,Active/Successful
+CMP_009,Instagram Ads,JP Nagar,26580.69,2445,71,243397.73,815.69,1.8725,Active/Successful
+CMP_010,Influencer Marketing,Koramangala,35608.86,1232,9,9562.91,-73.14,-0.9293,Active/Successful
+CMP_011,Google Ads,Koramangala,601.53,33,0,0.0,-100.0,-1.014,Failed
+CMP_012,Google Ads,HSR Layout,101326.05,3773,144,677549.31,568.68,1.0939,Active/Successful
+CMP_013,Instagram Ads,Koramangala,51665.16,3651,98,274184.66,430.7,0.6589,Active/Successful
+CMP_014,Google Ads,Jayanagar,6903.06,347,14,49703.22,620.02,1.2557,Active/Successful
+CMP_015,Facebook Ads,HSR Layout,5803.82,596,7,26970.85,364.71,0.4509,Active/Successful
+CMP_016,Google Ads,JP Nagar,5859.71,250,10,29751.82,407.74,0.5865,Active/Successful
+CMP_017,Google Ads,Indiranagar,10491.17,682,15,16885.75,60.95,-0.5066,Active/Successful
+CMP_018,Google Ads,Whitefield,21515.07,917,37,57621.06,167.82,-0.1698,Active/Successful
+CMP_019,Influencer Marketing,HSR Layout,16355.84,626,11,37350.08,128.36,-0.2941,Active/Successful
+CMP_020,Facebook Ads,Jayanagar,9955.24,721,16,34920.56,250.78,0.0918,Active/Successful
+CMP_021,Influencer Marketing,Jayanagar,27369.9,812,6,15996.24,-41.56,-0.8298,Active/Successful
+CMP_022,Outdoor (Billboards),HSR Layout,4344.92,146,0,0.0,-100.0,-1.014,Failed
+CMP_023,Outdoor (Billboards),Koramangala,9992.62,354,5,5010.41,-49.86,-0.8559,Active/Successful
+CMP_024,Influencer Marketing,Koramangala,13195.95,452,3,9409.07,-28.7,-0.7892,Active/Successful
+CMP_025,Outdoor (Billboards),JP Nagar,17610.94,431,3,5929.51,-66.33,-0.9078,Active/Successful
