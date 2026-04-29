@@ -1,0 +1,51 @@
+CustomerID,PurchaseDate,TransactionAmount,Category,Region,Quantity
+C180,2025-01-31,87.37,Apparel,North America,1
+C123,2025-02-05,145.53,Tech,Europe,7
+C124,2025-02-18,288.73,Tech,South America,6
+C148,2025-02-19,338.07,Home,Asia,10
+C170,2025-02-20,186.75,Tech,North America,2
+C172,2025-02-21,304.81,Tech,Europe,9
+C194,2025-02-22,12.68,Tech,South America,1
+C181,2025-02-27,120.36,Tech,Asia,4
+C102,2025-02-27,60.85,Home,Asia,4
+C128,2025-03-12,87.5,Beauty,North America,1
+C155,2025-03-22,487.35,Beauty,North America,5
+C130,2025-03-27,233.9,Beauty,South America,8
+C197,2025-04-02,583.27,Tech,Asia,9
+C188,2025-04-13,296.57,Home,South America,6
+C127,2025-04-30,429.81,Tech,Europe,9
+C140,2025-05-03,211.36,Home,South America,3
+C172,2025-05-07,484.15,Tech,North America,7
+C121,2025-05-16,701.76,Beauty,Europe,9
+C148,2025-05-23,129.95,Beauty,Asia,3
+C123,2025-05-23,99.76,Beauty,Europe,2
+C143,2025-05-23,115.19,Apparel,Europe,6
+C119,2025-07-11,391.74,Apparel,North America,10
+C136,2025-08-05,146.81,Beauty,Europe,4
+C166,2025-08-20,63.05,Tech,Europe,4
+C182,2025-08-23,96.59,Apparel,Asia,3
+C138,2025-08-23,51.25,Home,North America,1
+C161,2025-09-15,154.89,Apparel,North America,9
+C109,2025-09-21,234.25,Apparel,Asia,8
+C172,2025-09-25,281.1,Home,Asia,4
+C197,2025-09-30,761.73,Apparel,Europe,8
+C171,2025-10-03,459.46,Home,South America,10
+C107,2025-10-24,14.51,Tech,Asia,1
+C102,2025-10-29,16.39,Apparel,Europe,1
+C157,2025-10-29,218.5,Home,North America,3
+C148,2025-11-02,787.23,Beauty,Asia,9
+C119,2025-11-18,157.17,Apparel,South America,10
+C126,2025-12-10,671.48,Home,North America,10
+C101,2025-12-15,120.24,Tech,Asia,6
+C181,2025-12-19,30.61,Apparel,Asia,1
+C116,2026-01-06,661.4,Beauty,Europe,8
+C168,2026-01-09,353.21,Apparel,Europe,8
+C105,2026-01-09,119.64,Beauty,North America,7
+C129,2026-01-31,351.93,Home,North America,4
+C143,2026-02-14,1290.69,Tech,Europe,15
+C104,2026-02-17,79.78,Home,South America,5
+C137,2026-03-01,28.25,Home,Europe,2
+C159,2026-03-19,46.24,Tech,North America,1
+C172,2026-03-25,364.85,Home,Europe,8
+C151,2026-04-08,597.64,Tech,Europe,19
+C172,2026-04-30,667.54,Tech,North America,8
