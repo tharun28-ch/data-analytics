@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("meetmux_transactions.csv")
+df = pd.read_csv("../data/meetmux_transactions.csv")
 df["PurchaseDate"] = pd.to_datetime(df["PurchaseDate"])
 
 df["OrderMonth"] = df["PurchaseDate"].dt.to_period("M")
