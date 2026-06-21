@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaceMux · Application Funnel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="brand">
+                <div class="logo"></div>
+                <h2>PlaceMux</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active"><i class="icon-funnel"></i> Application Funnel</a></li>
+                <li><a href="#"><i class="icon-search"></i> Candidate Search</a></li>
+                <li><a href="#"><i class="icon-briefcase"></i> Job Pipeline</a></li>
+            </ul>
+            <div class="data-quality-status">
+                <div class="status-indicator"></div>
+                <div class="status-text">
+                    <span class="label">Pipeline Status</span>
+                    <span id="quality-status" class="value">Checking...</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Dashboard Content -->
+        <main class="dashboard-content">
+            <header class="top-header">
+                <div>
+                    <h1>Application Funnel Analytics</h1>
+                    <p class="subtitle">Real-time insights into student applications and shortlisting.</p>
+                </div>
+                <div class="date-range">Last 30 Days</div>
+            </header>
+
+            <!-- Key Metrics -->
+            <section class="kpi-grid" id="kpi-grid">
+                <!-- Populated via JS -->
+            </section>
+
+            <div class="dashboard-grid">
+                <!-- Funnel Visualization -->
+                <section class="card funnel-card">
+                    <div class="card-header">
+                        <h2>Conversion Funnel</h2>
+                        <span class="badge">Jobs Viewed → Shortlisted</span>
+                    </div>
+                    <div class="funnel-container" id="funnel-container">
+                        <!-- Populated via JS -->
+                    </div>
+                </section>
+
+                <!-- Trend Chart -->
+                <section class="card chart-card">
+                    <div class="card-header">
+                        <h2>Application Trends</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Candidate Quality Analysis -->
+                <section class="card table-card full-width">
+                    <div class="card-header">
+                        <h2>Candidate Quality vs. Skill Thresholds</h2>
+                        <p class="desc">What happens to candidates who do not meet the minimum job skill threshold?</p>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Candidate Category</th>
+                                    <th>Applications</th>
+                                    <th>Pending</th>
+                                    <th>Shortlisted</th>
+                                    <th>Rejected</th>
+                                    <th>Shortlist Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="quality-table-body">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
