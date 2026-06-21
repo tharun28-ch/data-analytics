@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaceMux | Monetization & Revenue Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-panel: #14141e;
+            --bg-panel-hover: #1c1c2a;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-success: #10b981;
+            --accent-danger: #ef4444;
+            --accent-warning: #f59e0b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --glass-bg: rgba(20, 20, 30, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        header {
+            padding: 2rem 4rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-area p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-muted);
+        }
+
+        .nav-tab:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-tab.active {
+            background: var(--accent-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        main {
+            padding: 3rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .metric-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .metric-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .metric-title {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .metric-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-trend {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .trend-up { color: var(--accent-success); }
+        .trend-down { color: var(--accent-danger); }
+
+        .metric-formula {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border-color);
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent-secondary);
+            background: rgba(139, 92, 246, 0.05);
+            padding: 0.75rem;
+            border-radius: 6px;
+        }
+
+        /* Tracking Plan Table */
+        .table-container {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.25rem 1.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+            font-size: 0.95rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr {
+            transition: background 0.2s ease;
+        }
+
+        tr:hover td {
+            background: var(--bg-panel-hover);
+        }
+
+        .event-name {
+            font-family: monospace;
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .payload-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: monospace;
+            margin: 0.2rem;
+            color: var(--text-muted);
+        }
+
+        /* Diagram Section */
+        .diagram-container {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .funnel-step {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .funnel-step:hover {
+            background: rgba(99, 102, 241, 0.05);
+            border-color: var(--accent-primary);
+            transform: scale(1.02);
+        }
+
+        .funnel-step::after {
+            content: '↓';
+            position: absolute;
+            bottom: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .funnel-step:last-child::after {
+            display: none;
+        }
+
+        .step-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .step-event {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>PlaceMux</h1>
+            <p>Monetization & Payments Analytics</p>
+        </div>
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="switchTab('metrics')">Revenue Metrics</div>
+            <div class="nav-tab" onclick="switchTab('tracking')">Event Tracking Plan</div>
+            <div class="nav-tab" onclick="switchTab('funnel')">Payment Funnel</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Metrics Tab -->
+        <div id="metrics" class="tab-content active">
+            <div class="section-header">
+                <h2>Revenue Metrics Definitions</h2>
+                <p>Core KPIs for tracking platform monetization and payment health.</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Monthly Recurring Revenue</span>
+                        <div class="metric-icon">🔁</div>
+                    </div>
+                    <div class="metric-value">$42,500</div>
+                    <div class="metric-trend trend-up">
+                        <span>↑ 12.5%</span> vs last month
+                    </div>
+                    <div class="metric-formula">
+                        SUM(active_subscriptions.monthly_value)
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Gross Revenue (YTD)</span>
+                        <div class="metric-icon">💰</div>
+                    </div>
+                    <div class="metric-value">$315,200</div>
+                    <div class="metric-trend trend-up">
+                        <span>↑ 8.2%</span> vs last year
+                    </div>
+                    <div class="metric-formula">
+                        SUM(successful_payments.amount)
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Average Rev Per Company</span>
+                        <div class="metric-icon">🏢</div>
+                    </div>
+                    <div class="metric-value">$850</div>
+                    <div class="metric-trend trend-up">
+                        <span>↑ 4.1%</span> vs last quarter
+                    </div>
+                    <div class="metric-formula">
+                        Total Revenue / Active Paying Companies
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Payment Conv. Rate</span>
+                        <div class="metric-icon">⚡</div>
+                    </div>
+                    <div class="metric-value">68.4%</div>
+                    <div class="metric-trend trend-down">
+                        <span>↓ 1.2%</span> vs last month
+                    </div>
+                    <div class="metric-formula">
+                        (payment_processed / checkout_started) * 100
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Refund Rate</span>
+                        <div class="metric-icon">↩️</div>
+                    </div>
+                    <div class="metric-value">1.8%</div>
+                    <div class="metric-trend trend-up">
+                        <span>↑ 0.3%</span> vs last month
+                    </div>
+                    <div class="metric-formula">
+                        (refund_issued / payment_processed) * 100
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Customer LTV</span>
+                        <div class="metric-icon">💎</div>
+                    </div>
+                    <div class="metric-value">$4,250</div>
+                    <div class="metric-trend trend-up">
+                        <span>↑ 5.0%</span> vs last quarter
+                    </div>
+                    <div class="metric-formula">
+                        ARPC / Revenue Churn Rate
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tracking Plan Tab -->
+        <div id="tracking" class="tab-content">
+            <div class="section-header">
+                <h2>Monetization Tracking Plan</h2>
+                <p>New events added to the tracking plan to support payment and revenue metrics.</p>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Trigger Point</th>
+                            <th>Required Payload Properties</th>
+                            <th>Business Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="event-name">checkout_started</span></td>
+                            <td>Company clicks "Proceed to Payment" or "Subscribe"</td>
+                            <td>
+                                <span class="payload-badge">plan_id</span>
+                                <span class="payload-badge">amount</span>
+                                <span class="payload-badge">currency</span>
+                            </td>
+                            <td>Track top-of-funnel payment intent. Used for Payment Conv. Rate.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="event-name">payment_processed</span></td>
+                            <td>Payment gateway returns success callback</td>
+                            <td>
+                                <span class="payload-badge">transaction_id</span>
+                                <span class="payload-badge">amount</span>
+                                <span class="payload-badge">payment_method</span>
+                            </td>
+                            <td>Core revenue event. Calculates Gross Revenue and ARPC.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="event-name">payment_failed</span></td>
+                            <td>Payment gateway returns error/decline</td>
+                            <td>
+                                <span class="payload-badge">error_code</span>
+                                <span class="payload-badge">error_message</span>
+                                <span class="payload-badge">amount</span>
+                            </td>
+                            <td>Monitor gateway health and payment friction points.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="event-name">subscription_started</span></td>
+                            <td>Company successfully activates a recurring plan</td>
+                            <td>
+                                <span class="payload-badge">plan_tier</span>
+                                <span class="payload-badge">billing_cycle</span>
+                            </td>
+                            <td>Calculates Monthly Recurring Revenue (MRR) growth.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="event-name">subscription_cancelled</span></td>
+                            <td>Company opts out of auto-renewal</td>
+                            <td>
+                                <span class="payload-badge">reason</span>
+                                <span class="payload-badge">days_active</span>
+                            </td>
+                            <td>Calculates Churn Rate and impacts Customer LTV.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="event-name">refund_issued</span></td>
+                            <td>Admin processes a refund in the gateway</td>
+                            <td>
+                                <span class="payload-badge">transaction_id</span>
+                                <span class="payload-badge">amount</span>
+                                <span class="payload-badge">reason</span>
+                            </td>
+                            <td>Calculates net revenue and Refund Rate KPI.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Funnel Tab -->
+        <div id="funnel" class="tab-content">
+            <div class="section-header">
+                <h2>Payment Funnel Flow</h2>
+                <p>Visual representation of the user journey mapping to the tracking plan.</p>
+            </div>
+
+            <div class="diagram-container">
+                <div class="funnel-step">
+                    <div class="step-info">
+                        <h3>1. Intent to Purchase</h3>
+                        <p>User reviews pricing and initiates checkout</p>
+                    </div>
+                    <div class="step-event">checkout_started</div>
+                </div>
+                
+                <div class="funnel-step">
+                    <div class="step-info">
+                        <h3>2. Payment Processing</h3>
+                        <p>System interacts with payment gateway (Stripe/Razorpay)</p>
+                    </div>
+                    <div class="step-event">payment_failed (Error Branch)</div>
+                </div>
+
+                <div class="funnel-step">
+                    <div class="step-info">
+                        <h3>3. Transaction Success</h3>
+                        <p>Funds captured successfully</p>
+                    </div>
+                    <div class="step-event">payment_processed</div>
+                </div>
+
+                <div class="funnel-step">
+                    <div class="step-info">
+                        <h3>4. Entitlement Granted</h3>
+                        <p>User account upgraded to premium tier</p>
+                    </div>
+                    <div class="step-event">subscription_started</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function switchTab(tabId) {
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to clicked tab and corresponding content
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
